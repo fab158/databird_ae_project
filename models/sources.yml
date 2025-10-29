@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: local_bike_sales
-    schema: raw_sales
+  - name: sales_localbike
+    schema: raw_sales_localbike
     description: sales data coming from the transactional system
     tables:
       - name: customers
@@ -16,8 +16,8 @@ sources:
       - name: order_items
         description: Items included in an order
     
-  - name: local_bike_production
-    schema: raw_production
+  - name: production_localbike
+    schema: raw_production_localbike
     description: production data coming from the transactional system
     tables:
       - name: products

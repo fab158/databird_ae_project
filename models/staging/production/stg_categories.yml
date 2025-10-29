@@ -1,0 +1,14 @@
+models:
+  - name: stg_categories
+    description: Product categories (bikes).
+    columns:
+      - name: category_id
+        description: The unique key for each category.
+        data_tests:
+          - not_null
+          - unique
+      - name: category_name
+        description: Category name of the bike
+        data_tests:
+           - not_null
+           - unique
