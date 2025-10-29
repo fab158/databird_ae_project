@@ -39,13 +39,21 @@ models:
   +persist_docs:
       relation: true
       columns: true
+
   local_bike:
-   
+
     staging:
+      schema: staging
       +materialized: view
+      +tags: ["staging"]
+
     intermediate:
-      materialized: view
+      schema: intermediate
+      +materialized: view
+      +tags: ["intermediate"]
+      
     mart:
       schema: mart
-      materialized: table
+      +materialized: table
+      +tags: ["mart"]
 
