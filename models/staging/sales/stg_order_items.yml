@@ -1,0 +1,8 @@
+models:
+  - name: stg_order_items
+    description: items order data with basic cleaning and normalization.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - order_id
+            - item_id
