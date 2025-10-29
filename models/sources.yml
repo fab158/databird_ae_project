@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: local_bike_sales
+    schema: raw_sales
+    description: sales data coming from the transactional system
+    tables:
+      - name: customers
+        description: One record per person who has purchased one or more items
+      - name: stores
+        description: Contains information about each store location
+      - name: staffs
+        description: Contains information about company staff members
+      - name: orders
+        description: One record per order
+      - name: order_items
+        description: Items included in an order
+    
+  - name: local_bike_production
+    schema: raw_production
+    description: production data coming from the transactional system
+    tables:
+      - name: products
+        description: Contains all information about the products
+      - name: categories
+        description: One record per product category
+      - name: stocks
+        description: Tracks available quantities for each product
+      - name: brands
+        description: Contains information about product brands

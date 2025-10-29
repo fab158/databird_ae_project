@@ -1,0 +1,26 @@
+models:
+  - name: stg_staffs
+    description: Customer data with basic cleaning and normalization.
+    columns:
+      - name: staff_id
+        description: The unique key for each customer.
+        data_tests:
+          - not_null
+          - unique
+      - name: first_name
+        meta:
+          sensitive: true
+          masking_required: true
+      - name: last_name
+        meta:
+          sensitive: true
+          masking_required: true
+      - name: email
+        meta:
+          sensitive: true
+          masking_required: true
+      - name: phone
+        meta:
+          sensitive: true
+          masking_required: true
+      
