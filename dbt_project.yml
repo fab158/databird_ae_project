@@ -53,7 +53,7 @@ models:
       +tags: ["intermediate"]
       
     mart:
-      schema: mart
+      schema: marts
       +materialized: table
-      +tags: ["mart"]
+      +tags: ["marts"]
 
