@@ -6,4 +6,4 @@ select
    list_price,
    model_year
 from
-  {{ source('localbike','brands') }}
+  {{ source('localbike_database','products') }}

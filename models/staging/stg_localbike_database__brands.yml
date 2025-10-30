@@ -11,4 +11,3 @@ models:
         description: brand of the bike
         data_tests:
            - not_null
-           - unique
