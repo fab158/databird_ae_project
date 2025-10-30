@@ -9,7 +9,7 @@ models:
           - unique
       - name: product_name
         description: Product name unique in his category
-           - unique
+           - not_null
       - name: brand_id
         data_tests:
           - relationships:
