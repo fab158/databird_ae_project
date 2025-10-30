@@ -55,7 +55,7 @@ models:
     mart:
       schema: marts_localbike
       +materialized: table
-      +tags: ["marts"]
+      +tags: ["mart"]
 
 vars:
   default_min_year: 1900
