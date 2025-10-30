@@ -1,0 +1,55 @@
+models:
+  - name: stg_customers
+    description: Liste des clients de localbike (une ligne par client)
+    columns:
+      - name: customer_id
+        description: cle identifiant le client 
+        data_tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: Prenom du client 
+        data_tests:
+           - not_null
+      - name: last_name
+        description: Nom du client 
+        data_tests:
+           - not_null
+      - name: phone
+        description: >
+           Telephone du client (donnee personnelle soumise au rgpd )
+           Ici la balise sensitive est purement declarative mais dans un contexte réél pourrait etre utilise dans une macro 
+           La donnée sera anomysee (cf. macro anomymise_column)
+        meta:
+          sensitive: true
+        data_tests:
+           - not_null
+
+      - name: email
+        description: >
+           Email du client (donnee personnelle )
+           Ici la metadonne sensitive est purement declarative mais dans un contexte réél pourrait etre utilisée
+           par une macro pour recuperer automatiquement toutes les données sensibles d'un modele
+           (cf. macro anomymise_column)
+        meta:
+          sensitive: true
+
+      - name: street
+        description: >
+           Adresse du client (donnee personnelle )
+           Ici la metadonne sensitive est purement declarative mais dans un contexte réél pourrait etre utilisée
+           par une macro pour recuperer automatiquement toutes les données sensibles d'un modele
+           (cf. macro anomymise_column)
+        meta:
+          sensitive: true
+
+      - name: city
+        description: Ville du client.
+
+      - name: state
+        description: Etat/Région du client.
+
+      - name: zip_code
+        description: Code postal du client.
+       
+           
