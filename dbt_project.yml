@@ -43,17 +43,20 @@ models:
   local_bike:
 
     staging:
-      schema: staging
+      schema: staging_localbike
       +materialized: view
       +tags: ["staging"]
 
     intermediate:
-      schema: intermediate
+      schema: intermediate_localbike
       +materialized: view
       +tags: ["intermediate"]
       
     mart:
-      schema: marts
+      schema: marts_localbike
       +materialized: table
       +tags: ["marts"]
 
+vars:
+  default_min_year: 1900
+  default_max_year: 2999
