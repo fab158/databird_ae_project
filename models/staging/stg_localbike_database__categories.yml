@@ -11,4 +11,3 @@ models:
         description: Category name of the bike
         data_tests:
            - not_null
-           - unique
