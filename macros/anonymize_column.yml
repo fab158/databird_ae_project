@@ -1,0 +1,15 @@
+version: 2
+
+macros:
+  - name: anonymize_column
+    description: >
+        Macro pemettant d'anonymiser une colonne d'un modele
+        Dans le cadre de la gestion du RGPD, il est necessaire de traiter de gerer de particulieres les données sensibles (PII,PHI etc ...) 
+        Dans le cadre de ce projet , cette macro est volontairement simplifiée 
+        Dans un contexte réél, l'ensemble des metadonnées du modele pourraient etre parcourues et si la donnée est sensible
+        un systeme de tag et de masking policy pourrait etre mis en place en fonction des roles (ici l'information dans le yml est juste declarative )
+    arguments:
+      - name: col
+        description: Nom de la colonne à anonymiser
+      - name: method
+        description: Méthode de hash à utiliser (default -> sha)
