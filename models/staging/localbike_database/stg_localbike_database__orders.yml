@@ -1,0 +1,14 @@
+ models:
+  - name: stg_localbike_database__orders
+    description: > 
+        Table de staging des commandes permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
+    columns:
+      - name: order_status
+        description: The unique key for each product.
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                inclusive: false
+   

@@ -1,0 +1,27 @@
+models:
+  - name: stg_localbike_database__stocks
+    description: > 
+        Table de staging des stocks permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
+    columns:
+      - name: product_id
+        description: cle etrangere liée au produit.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_localbike_database__products')
+                field: product_id
+      - name: store_id
+        description: cle etrangere liée au produit.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_localbike_database__stores')
+                field: store_id
+      - name: quantity
+        description: Quantité en stock du produit x dans le magasin y
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+   

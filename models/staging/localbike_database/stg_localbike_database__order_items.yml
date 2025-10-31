@@ -28,7 +28,8 @@ models:
       - name: total_price
         description: Prix total du produit x sur la commande
         data_tests:
-        - dbt_utils.expression_is_true:
-            arguments: 
-              expression: "total_price > 0 "
+         - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                inclusive: false
    

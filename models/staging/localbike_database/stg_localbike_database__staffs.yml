@@ -8,16 +8,33 @@ models:
           - not_null
           - unique
       - name: first_name
-        meta:
-          sensitive: true
-          masking_required: true
+        data_tests:
+          - not_null
+       
       - name: last_name
         description: The unique key for each customer.
+        data_tests:
+          - not_null
       
       - name: email
         description: The unique key for each customer.
-       
+        data_tests:
+          - not_null
       - name: phone
         description: The unique key for each customer.
-       
+        data_tests:
+          - not_null
+      - name: active
+        description: The unique key for each customer.
+      - name: store_id
+        description: The unique key for each customer.
+      - name: store_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_localbike_database__stores')
+                field: store_id
+      - name: manager_id
+        description: The unique key for each customer.
+   
       
