@@ -1,29 +1,32 @@
 models:
-  - name: stg_customers
-    description: Liste des clients de localbike (une ligne par client)
+  - name: stg_localbike_database__customers
+    description: > 
+        Table de staging des clients permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
     columns:
       - name: customer_id
-        description: cle identifiant le client 
+        description: cle identifiant le client issue du systeme source
         data_tests:
           - not_null
           - unique
+
       - name: first_name
         description: Prenom du client 
         data_tests:
            - not_null
+
       - name: last_name
         description: Nom du client 
         data_tests:
            - not_null
-      - name: phone
+
+      - name: Telephone du client
         description: >
            Telephone du client (donnee personnelle soumise au rgpd )
            Ici la balise sensitive est purement declarative mais dans un contexte réél pourrait etre utilise dans une macro 
            La donnée sera anomysee (cf. macro anomymise_column)
         meta:
           sensitive: true
-        data_tests:
-           - not_null
 
       - name: email
         description: >
@@ -33,6 +36,8 @@ models:
            (cf. macro anomymise_column)
         meta:
           sensitive: true
+        data_tests:
+           - unique
 
       - name: street
         description: >
@@ -45,11 +50,16 @@ models:
 
       - name: city
         description: Ville du client.
+        data_tests:
+          - not_null
 
       - name: state
         description: Etat/Région du client.
+        data_tests:
+          - not_null
 
       - name: zip_code
         description: Code postal du client.
-       
+        data_tests:
+           - not_null
            

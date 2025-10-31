@@ -1,8 +1,16 @@
 models:
-  - name: stg_order_items
+  - name: stg_localbike_database__order_items
     description: items order data with basic cleaning and normalization.
-    tests:
+    data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - order_id
             - item_id
+    columns:
+      - name: quantity
+        description: Quantité vendu du produit x sur la commande
+        data_tests:
+        - dbt_utils.expression_is_true:
+            arguments: 
+              expression: "quantity > 0 "
+   

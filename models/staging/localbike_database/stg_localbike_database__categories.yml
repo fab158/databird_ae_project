@@ -1,13 +1,15 @@
 models:
-  - name: stg_categories
-    description: Product categories (bikes).
+  - name: stg_localbike_database__categories
+    description: > 
+        Table de staging des categories de produit permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
     columns:
       - name: category_id
-        description: The unique key for each category.
+        description: Cle identifiant chaque categorie
         data_tests:
           - not_null
           - unique
       - name: category_name
-        description: Category name of the bike
+        description: Nom de la catégorie de produit
         data_tests:
            - not_null
