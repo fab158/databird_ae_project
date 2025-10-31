@@ -1,13 +1,13 @@
 models:
-  - name: stg_brands
-    description: Product brand.
+  - name: stg_localbike_database__brands
+    description: Table de staging des marques permettant de formatter/normaliser les données issues du systeme transactionnel de localbike
     columns:
       - name: brand_id
-        description: The unique key for each brand.
+        description: Cle identifiant la marque issue du systeme source
         data_tests:
           - not_null
           - unique
       - name: brand_name
-        description: brand of the bike
+        description: marque du produit
         data_tests:
            - not_null

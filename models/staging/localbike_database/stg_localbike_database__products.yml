@@ -1,5 +1,5 @@
 models:
-  - name: stg_products
+  - name: stg_localbike_database__products
     description: bikes .
     columns:
       - name: product_id
