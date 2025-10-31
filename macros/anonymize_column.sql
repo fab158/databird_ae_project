@@ -1,4 +1,4 @@
-{% macro anonymize_column(col, method='md5') %}
+{% macro anonymize_column(col, method='sha') %}
     {% set val = "COALESCE(" ~ col ~ ", '')" %}
     {% if method == 'md5' %}
         MD5({{ val }})

@@ -1,16 +1,35 @@
 models:
   - name: stg_localbike_database__order_items
-    description: items order data with basic cleaning and normalization.
+    description: > 
+        Table de staging des lignes de commandes permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - order_id
             - item_id
+    
     columns:
-      - name: quantity
-        description: Quantité vendu du produit x sur la commande
+      - name: order_id
         data_tests:
-        - dbt_utils.expression_is_true:
-            arguments: 
-              expression: "quantity > 0 "
+          - relationships:
+              arguments:
+                to: ref('stg_localbike_database__orders')
+                field: order_id 
+      
+      - name: product_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_localbike_database__products')
+                field: product_id
+
+
+      - name: total_price
+        description: Prix total du produit x sur la commande
+        data_tests:
+         - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                inclusive: false
    

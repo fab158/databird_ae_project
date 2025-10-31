@@ -1,0 +1,6 @@
+version: 2
+macros:
+  - name: add_metadata_columns
+    description: >
+      Ajoute les colonnes dbt_created_at et dbt_updated_at pour le suivi et l'audit.
+      Peut egalement etre utile pour le chargement incremental
