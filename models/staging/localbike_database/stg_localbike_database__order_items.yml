@@ -25,8 +25,8 @@ models:
                 field: product_id
 
 
-      - name: total_price
-        description: Prix total du produit x sur la commande
+      - name: quantity
+        description: Quantite commandée
         data_tests:
          - dbt_utils.accepted_range:
               arguments:

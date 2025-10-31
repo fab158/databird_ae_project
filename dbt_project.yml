@@ -66,4 +66,5 @@ vars:
   default_float: 0.0
   default_min_year: 1900
   default_max_year: 2999
-  
+  default_min_calendar: 2010
+  default_max_calendar: 2030  
