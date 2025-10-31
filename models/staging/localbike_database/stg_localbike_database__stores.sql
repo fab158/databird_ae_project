@@ -1,6 +1,6 @@
 select
-    store_name,
     store_id,
+    store_name,
     phone,
     email,
     street,
