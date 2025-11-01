@@ -10,6 +10,8 @@ macros:
         un systeme de tag coté bigquery et de masking policy pourrait etre mis en place en fonction des roles (ici l'information dans le yml est juste declarative )
     arguments:
       - name: col
+        type: string
         description: Nom de la colonne à anonymiser
       - name: method
+        type: string
         description: Méthode de hash à utiliser (default -> sha)

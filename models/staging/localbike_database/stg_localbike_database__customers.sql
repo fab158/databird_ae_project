@@ -1,5 +1,5 @@
 SELECT 
-	CAST(customer_id AS INTEGER)     AS customer_id,  
+	CAST(customer_id AS STRING)      AS customer_id,  
 	CAST(first_name AS STRING)       AS first_name,  
 	CAST(last_name AS STRING)        AS last_name,
 	{{ anonymize_column('phone') }}  AS phone,
