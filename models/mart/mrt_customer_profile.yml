@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: mrt_customer_profile
-    description: ""
+    description:> 
+    
     columns:
       - name: customer_id
         data_type: string
