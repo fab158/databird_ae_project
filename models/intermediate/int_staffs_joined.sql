@@ -16,7 +16,7 @@ SELECT
     mng.store_id   AS manager_store_id  
 FROM {{ ref('stg_localbike_database__staffs') }} emp
 LEFT JOIN {{ ref('stg_localbike_database__staffs') }} mng
-    ON cast(emp.manager_id AS string)= cast(mng.staff_id AS string)
+    ON emp.manager_id = mng.staff_id
 LEFT join {{ ref('stg_localbike_database__stores') }} sto
     ON emp.store_id = sto.store_id
 
