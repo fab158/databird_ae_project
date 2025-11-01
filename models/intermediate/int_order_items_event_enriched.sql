@@ -1,21 +1,22 @@
-with order_items_enriched as (
+WITH order_items_enriched AS (
 
-    select 
+    SELECT 
        item_id,
        order_id,
        product_id,
        quantity,
        list_price,
        discount,
-       quantity * list_price * (1 - discount) as order_item_total,
-       quantity * list_price * discount       as order_item_discount,
-       quantity * list_price                  as order_item_without_discount
-    from 
+       quantity * list_price * (1 - discount) AS order_item_total,
+       quantity * list_price * discount       AS order_item_discount,
+       quantity * list_price                  AS order_item_without_discount
+    FROM 
         {{ ref('stg_localbike_database__order_items') }}
 
 ),
-order_enriched as (
-    select
+order_enriched AS (
+    
+    SELECT
         order_id,
         order_date,
         order_status,
@@ -24,21 +25,21 @@ order_enriched as (
         store_id,  
         customer_id,
         staff_id,  
-        case 
-            when shipped_date is null then
+        CASE  
+            WHEN shipped_date IS NULL THEN
                "NOT_SHIPPED"
-            else
+            ELSE
                "SHIPPED"
-        end as shipment_status,
-        case shipped_date is not null
-            when shipped_date > required_date then
+        END AS shipment_status,
+        CASE shipped_date IS NOT NULL
+            WHEN shipped_date > required_date THEN
                "LATE_ORDER"
-            when shipped_date <= required_date then
+            WHEN shipped_date <= required_date THEN
                "ON_TIME_ORDER"
-            else
+            ELSE
             "{{ var('default_string_not_applicable') }}"
-        end as shipment_type
-    from 
+        END AS shipment_type
+    FROM 
         {{ ref('stg_localbike_database__orders') }}
 
 )

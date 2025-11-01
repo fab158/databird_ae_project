@@ -1,10 +1,5 @@
-{{ config(
-    tags=['daily']
-) }}
-
-
-with sales_by_product AS (
-    select
+WITH sales_by_product AS (
+    SELECT
         DATE(evt.order_date) AS order_date,
         evt.order_store_id,
         evt.order_store_name,
@@ -18,37 +13,40 @@ with sales_by_product AS (
         SUM(evt.quantity) AS total_quantities,
         SUM(evt.order_item_discount) AS orders_discount,
         SUM(evt.order_item_without_discount) AS orders_without_discount,
-        count(distinct order_id) AS order_nb
-    from 
+        COUNT(DISTINCT order_id) AS order_nb
+    FROM 
         {{ ref('int_order_items_event_enriched') }} evt
-    left join {{ ref('int_products_joined') }} prd
-        on evt.product_id=prd.product_id
-    where evt.shipment_status = 'SHIPPED'
-    group by all
+    LEFT JOIN {{ ref('int_products_joined') }} prd
+        ON evt.product_id=prd.product_id
+    WHERE evt.shipment_status = 'SHIPPED'
+    GROUP BY ALL
 ),
-last_sales_date as(
-    select max(order_date) as max_order_date
-    from sales_by_product
+last_sales_date AS(
+    SELECT 
+        max(order_date) as max_order_date
+    FROM 
+        sales_by_product
 ),
 restricted_years_calendar as (
-    select
-    full_date,
-    date_key,
-    year,
-    month,
-    day,
-    day_of_week,
-    day_name,
-    quarter_label,
-    season,
-    from {{ ref('int_calendar') }}
-    cross join last_sales_date
-    where 
+    SELECT
+        full_date,
+        date_key,
+        year,
+        month,
+        day,
+        day_of_week,
+        day_name,
+        quarter_label,
+        season,
+    FROM {{ ref('int_calendar') }}
+    CROSS JOIN last_sales_date
+    WHERE 
          full_date 
-    between  
-       DATE_SUB(max_order_date, INTERVAL 2 YEAR) and max_order_date
+    BETWEEN  
+       DATE_SUB(max_order_date, INTERVAL 2 YEAR) AND max_order_date
 )
-select
+
+SELECT
     dte.full_date,
     dte.date_key,
     dte.year,
@@ -71,7 +69,7 @@ select
     COALESCE(sls.orders_discount, 0) AS total_sales_discount,
     {{ add_metadata_columns() }} 
 
- from restricted_years_calendar dte
- left join sales_by_product sls
-    on sls.order_date = dte.full_date
- order by full_date desc
+ FROM restricted_years_calendar dte
+ LEFT JOIN sales_by_product sls
+    ON sls.order_date = dte.full_date
+ ORDER BY full_date DESC

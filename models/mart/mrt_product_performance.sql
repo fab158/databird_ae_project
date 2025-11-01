@@ -1,24 +1,24 @@
-select
+SELECT
     prd.product_id,
     prd.product_name,
     prd.category_name,
     prd.brand_name,
-    sum(order_item_total) as total_sales,
-    sum(quantity) as total_quantity_sold,
-    sum(order_item_discount) as total_discount,
-    count(distinct order_store_id) as nb_stores_selling,
-    count(distinct evt.order_id) as nb_sales,
-    count(distinct evt.order_date) as nb_day_with_sales,
+    SUM(order_item_total) AS total_sales,
+    SUM(quantity) AS total_quantity_sold,
+    SUM(order_item_discount) AS total_discount,
+    COUNT(DISTINCT order_store_id) AS nb_stores_selling,
+    COUNT(DISTINCT evt.order_id) AS nb_sales,
+    COUNT(DISTINCT evt.order_date) AS nb_day_with_sales,
     round(
-        safe_divide(sum(order_item_total), count(distinct evt.order_store_id)), 2
-    ) as avg_sales_per_store,
+        safe_divide(SUM(order_item_total), COUNT(DISTINCT evt.order_store_id)), 2
+    ) AS avg_sales_per_store,
     round(
-        safe_divide(sum(evt.order_item_discount), sum(evt.order_item_without_discount)), 4
-    ) as avg_discount_rate,
+        safe_divide(SUM(evt.order_item_discount), SUM(evt.order_item_without_discount)), 4
+    ) AS avg_discount_rate,
     round(
-        safe_divide(sum(evt.order_item_discount), count(distinct evt.order_id)), 2
-    ) as avg_discount_amount_per_order
-from {{ ref("int_order_items_event_enriched") }} evt
-left join {{ ref("int_products_joined") }} prd on evt.product_id = prd.product_id
-where evt.shipment_status = 'SHIPPED'
-group by all
+        safe_divide(SUM(evt.order_item_discount), COUNT(DISTINCT evt.order_id)), 2
+    ) AS avg_discount_amount_per_order
+FROM {{ ref("int_order_items_event_enriched") }} evt
+LEFT join {{ ref("int_products_joined") }} prd on evt.product_id = prd.product_id
+WHERE evt.shipment_status = 'SHIPPED'
+GROUP BY ALL
