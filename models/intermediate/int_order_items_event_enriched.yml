@@ -4,7 +4,7 @@ models:
   - name: int_order_items_event_enriched
     description: > 
        Table de la couche intermediate. Cette table sert à denormaliser les données , et enrichir les données de nouvelles variables dérivées
-       => La granularité la plus fine ici est la ligne de facture
+       => La granularité la plus fine ici est la ligne de commande
     columns:
       - name: order_id
         description: ""

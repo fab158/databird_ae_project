@@ -5,7 +5,7 @@ models:
     description: > 
         Table de la couche intermediate.Cette table permet de créer un calendrier qui pourra ensuite 
         etre utilisé à differents niveaux de granularité notemment dans la couche mart.
-        => La granularité la plus fine est le jour (pas de notion d horaire)
+        => La granularité la plus fine ici est le jour (pas de notion d horaire)
     columns:
       - name: full_date
         description: ""
