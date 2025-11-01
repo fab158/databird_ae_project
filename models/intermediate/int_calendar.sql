@@ -51,34 +51,11 @@ select
     EXTRACT(DAY from full_date) AS day,
     EXTRACT(DAYOFWEEK from full_date) AS day_of_week,
     EXTRACT(WEEK from full_date) AS week_of_year,
-    CASE EXTRACT(DAYOFWEEK from full_date)
-        WHEN 1 THEN 'Dimanche'
-        WHEN 2 THEN 'Lundi'
-        WHEN 3 THEN 'Mardi'
-        WHEN 4 THEN 'Mercredi'
-        WHEN 5 THEN 'Jeudi'
-        WHEN 6 THEN 'Vendredi'
-        WHEN 7 THEN 'Samedi'
-    END AS day_name,
-
-    CASE EXTRACT(MONTH from full_date)
-        WHEN 1 THEN 'Janvier'
-        WHEN 2 THEN 'Février'
-        WHEN 3 THEN 'Mars'
-        WHEN 4 THEN 'Avril'
-        WHEN 5 THEN 'Mai'
-        WHEN 6 THEN 'Juin'
-        WHEN 7 THEN 'Juillet'
-        WHEN 8 THEN 'Août'
-        WHEN 9 THEN 'Septembre'
-        WHEN 10 THEN 'Octobre'
-        WHEN 11 THEN 'Novembre'
-        WHEN 12 THEN 'Décembre'
-    END AS month_label,
+    FORMAT_DATE('%A', full_date) AS day_name,
 
     CASE 
-        WHEN EXTRACT(DAYOFWEEK from full_date) IN (1, 7) THEN 'Week-end'
-        ELSE 'Semaine'
+        WHEN EXTRACT(DAYOFWEEK from full_date) IN (1, 7) THEN 'Weekend'
+        ELSE 'Weekday'
     END AS day_type,
 
     CASE 
@@ -89,9 +66,9 @@ select
     END AS quarter_label,
 
     CASE 
-        WHEN EXTRACT(MONTH from full_date) IN (12, 1, 2) THEN 'Hiver'
-        WHEN EXTRACT(MONTH from full_date) IN (3, 4, 5) THEN 'Printemps'
-        WHEN EXTRACT(MONTH from full_date) IN (6, 7, 8) THEN 'Été'
-        ELSE 'Automne'
+        WHEN EXTRACT(MONTH from full_date) IN (12, 1, 2) THEN 'Winter'
+        WHEN EXTRACT(MONTH from full_date) IN (3, 4, 5) THEN 'Spring'
+        WHEN EXTRACT(MONTH from full_date) IN (6, 7, 8) THEN 'Summer'
+        ELSE 'Autumn'
     END AS season
 from calendar
