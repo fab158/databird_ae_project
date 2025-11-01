@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: int_calendar
+    description: > 
+        Table de la couche intermediate.Cette table permet de créer un calendrier qui pourra ensuite 
+        etre utilisé à differents niveaux de granularité notemment dans la couche mart.
+        => La granularité la plus fine ici est le jour (pas de notion d horaire)
+    columns:
+      - name: full_date
+        description: ""
+        data_tests:
+          - not_null
+          - unique
+
+      - name: date_key
+        description: ""
+        data_tests:
+          - not_null
+          - unique
+        
+
+      - name: year
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: quarter
+        description: ""
+
+      - name: month
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: day
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: day_of_week
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: week_of_year
+        description: ""
+    
+      - name: day_name
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: day_type
+        description: ""
+        data_tests:
+         - accepted_values:
+              arguments: 
+                values: ['Weekend', 'Weekday']
+
+      - name: quarter_label
+        description: ""
+        data_tests:
+         - accepted_values:
+              arguments: 
+                values: ['T1', 'T2', 'T3', 'T4']
+
+      - name: season
+        description: ""
+        data_tests:
+         - accepted_values:
+              arguments: 
+                values: ['Spring', 'Summer', 'Autumn', 'Winter']
