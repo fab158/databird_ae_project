@@ -58,9 +58,9 @@ models:
       +tags: ["mart"]
 
 vars:
-  default_string_not_provided: "Non renseigné"
-  default_string_not_applicable: "Non applicable"
-  default_string_unknown: "Inconnu"
+  default_string_not_provided: "NOT_PROVIDED"
+  default_string_not_applicable: "NOT_APPLICABLE"
+  default_string_unknown: "UNKNOWN"
   default_date: "1900-01-01"
   default_numeric: 0
   default_float: 0.0

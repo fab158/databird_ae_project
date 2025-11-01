@@ -1,11 +1,11 @@
 {{ config(materialized='table') }}
 
 WITH default_calendar  AS (
-    select
-        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_min_year') }}, '-01-01'))  as default_min_date,
-        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_max_year') }}, '-12-31'))  as default_max_date,
-        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_min_calendar') }}, '-01-01'))  as default_min_calendar,
-        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_max_calendar') }}, '-12-31'))  as default_max_calendar
+    SELECT
+        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_min_year') }}, '-01-01'))      AS default_min_date,
+        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_max_year') }}, '-12-31'))      AS default_max_date,
+        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_min_calendar') }}, '-01-01'))  AS default_min_calendar,
+        PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_max_calendar') }}, '-12-31'))  AS default_max_calendar
 ),
 base_calendar AS (
     SELECT 
@@ -23,26 +23,31 @@ base_calendar AS (
     )) AS day_num
 ),
 technical_dates AS (
-        select 
+        SELECT 
             default_min_date AS full_date 
-        from default_calendar
-    union all
-        select 
+        FROM 
+            default_calendar
+    UNION ALL
+        SELECT 
             default_max_date AS full_date
-        from default_calendar
+        FROM 
+            default_calendar
 ),
 calendar AS (
-        select 
+        SELECT 
             full_date 
-        from base_calendar
-    union all 
-        select 
+        FROM 
+            base_calendar
+
+    UNION ALL
+
+        SELECT 
             full_date 
-        from technical_dates
+        FROM 
+            technical_dates
 )
 
-
-select
+SELECT
     full_date,
     FORMAT_DATE('%Y%m%d', full_date) AS date_key,
     EXTRACT(YEAR from full_date) AS year,
@@ -51,34 +56,11 @@ select
     EXTRACT(DAY from full_date) AS day,
     EXTRACT(DAYOFWEEK from full_date) AS day_of_week,
     EXTRACT(WEEK from full_date) AS week_of_year,
-    CASE EXTRACT(DAYOFWEEK from full_date)
-        WHEN 1 THEN 'Dimanche'
-        WHEN 2 THEN 'Lundi'
-        WHEN 3 THEN 'Mardi'
-        WHEN 4 THEN 'Mercredi'
-        WHEN 5 THEN 'Jeudi'
-        WHEN 6 THEN 'Vendredi'
-        WHEN 7 THEN 'Samedi'
-    END AS day_name,
-
-    CASE EXTRACT(MONTH from full_date)
-        WHEN 1 THEN 'Janvier'
-        WHEN 2 THEN 'Février'
-        WHEN 3 THEN 'Mars'
-        WHEN 4 THEN 'Avril'
-        WHEN 5 THEN 'Mai'
-        WHEN 6 THEN 'Juin'
-        WHEN 7 THEN 'Juillet'
-        WHEN 8 THEN 'Août'
-        WHEN 9 THEN 'Septembre'
-        WHEN 10 THEN 'Octobre'
-        WHEN 11 THEN 'Novembre'
-        WHEN 12 THEN 'Décembre'
-    END AS month_label,
+    FORMAT_DATE('%A', full_date) AS day_name,
 
     CASE 
-        WHEN EXTRACT(DAYOFWEEK from full_date) IN (1, 7) THEN 'Week-end'
-        ELSE 'Semaine'
+        WHEN EXTRACT(DAYOFWEEK from full_date) IN (1, 7) THEN 'Weekend'
+        ELSE 'Weekday'
     END AS day_type,
 
     CASE 
@@ -89,9 +71,9 @@ select
     END AS quarter_label,
 
     CASE 
-        WHEN EXTRACT(MONTH from full_date) IN (12, 1, 2) THEN 'Hiver'
-        WHEN EXTRACT(MONTH from full_date) IN (3, 4, 5) THEN 'Printemps'
-        WHEN EXTRACT(MONTH from full_date) IN (6, 7, 8) THEN 'Été'
-        ELSE 'Automne'
+        WHEN EXTRACT(MONTH from full_date) IN (12, 1, 2) THEN 'Winter'
+        WHEN EXTRACT(MONTH from full_date) IN (3, 4, 5) THEN 'Spring'
+        WHEN EXTRACT(MONTH from full_date) IN (6, 7, 8) THEN 'Summer'
+        ELSE 'Autumn'
     END AS season
-from calendar
+FROM calendar

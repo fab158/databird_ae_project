@@ -1,76 +1,75 @@
-
-
-WITH sales AS (
+WITH sales_by_product AS (
     SELECT
-        DATE(order_date) AS order_date,
-        order_store_id,
-        order_store_name,
-        product_id,
-        product_name,
-        category_name,
-        order_store_city,
-        order_store_state,
-        SUM(order_item_total) AS total_sales,
-        SUM(quantity) AS total_quantity,
-        COUNT(DISTINCT order_id) AS total_orders
-    FROM {{ ref('int_order_items_event_joined') }} evt
-    where evt.order_status = 4
-    GROUP BY 
-        order_date,
-        order_store_id,
-        order_store_name,
-        product_id,
-        product_name,
-        category_name,
-        order_store_city,
-        order_store_state
+        DATE(evt.order_date) AS order_date,
+        evt.order_store_id,
+        evt.order_store_name,
+        evt.product_id,
+        prd.product_name,
+        prd.category_name,
+        prd.brand_name,
+        evt.order_store_city,
+        evt.order_store_state,
+        SUM(evt.order_item_total) AS total_orders,
+        SUM(evt.quantity) AS total_quantities,
+        SUM(evt.order_item_discount) AS orders_discount,
+        SUM(evt.order_item_without_discount) AS orders_without_discount,
+        COUNT(DISTINCT order_id) AS order_nb
+    FROM 
+        {{ ref('int_order_items_event_enriched') }} evt
+    LEFT JOIN {{ ref('int_products_joined') }} prd
+        ON evt.product_id=prd.product_id
+    WHERE evt.shipment_status = 'SHIPPED'
+    GROUP BY ALL
 ),
-last_sales_date as(
-    select max(order_date) as max_order_date
-    from sales
+last_sales_date AS(
+    SELECT 
+        max(order_date) as max_order_date
+    FROM 
+        sales_by_product
 ),
-restricted_years_calandar as (
-    select
-    full_date,
-    date_key,
-    year,
-    month,
-    day,
-    day_of_week,
-    day_name,
-    quarter_label,
-    season,
-    from {{ ref('int_calendar') }}
-    cross join last_sales_date
-     WHERE 
+restricted_years_calendar as (
+    SELECT
+        full_date,
+        date_key,
+        year,
+        month,
+        day,
+        day_of_week,
+        day_name,
+        quarter_label,
+        season,
+    FROM {{ ref('int_calendar') }}
+    CROSS JOIN last_sales_date
+    WHERE 
          full_date 
-    between  
-       DATE_SUB(max_order_date, INTERVAL 2 YEAR) - 2 and max_order_date
+    BETWEEN  
+       DATE_SUB(max_order_date, INTERVAL 2 YEAR) AND max_order_date
 )
+
 SELECT
-    d.full_date,
-    d.date_key,
-    d.year,
-    d.month,
-    d.day,
-    d.day_of_week,
-    d.day_name,
-    d.quarter_label,
-    d.season,
+    dte.full_date,
+    dte.date_key,
+    dte.year,
+    dte.month,
+    dte.day,
+    dte.day_of_week,
+    dte.day_name,
+    dte.quarter_label,
+    dte.season,
     
-    s.order_store_id,
-    s.order_store_name,
-    s.product_id,
-    s.product_name,
-    s.category_name,
-    s.order_store_city,
-    s.order_store_state,
-    COALESCE(s.total_sales, 0) AS total_sales,
-    COALESCE(s.total_quantity, 0) AS total_quantity,
-    COALESCE(s.total_orders, 0) AS total_orders
+    sls.order_store_id,
+    sls.order_store_name,
+    sls.product_id,
+    sls.product_name,
+    sls.category_name,
+    sls.order_store_city,
+    sls.order_store_state,
+    COALESCE(sls.total_orders, 0) AS total_sales,
+    COALESCE(sls.total_quantities, 0) AS total_quantities,
+    COALESCE(sls.orders_discount, 0) AS total_sales_discount,
+    {{ add_metadata_columns() }} 
 
- from restricted_years_calandar d
-LEFT JOIN sales s
-    ON s.order_date = d.full_date
-order by full_date desc
-
+ FROM restricted_years_calendar dte
+ LEFT JOIN sales_by_product sls
+    ON sls.order_date = dte.full_date
+ ORDER BY full_date DESC
