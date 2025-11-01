@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_products_joined
+    description: > 
+       Table de la couche intermediate. Cette table sert à denormaliser les données du produit.
+       Il s'agit donc ici de mettre a plat les informations liées au concept de  produit (brand categorie..) etc
+       Cette agregation pourra etre ensuite etre reutilisée par les couches superieures
+       => La granularité la plus fine ici est le produit
+    columns:
+      - name: product_id
+        description: ""
+
+      - name: product_name
+        description: ""
+
+      - name: brand_id
+        description: ""
+
+      - name: brand_name
+        description: ""
+
+      - name: category_id
+        description: ""
+
+      - name: category_name
+        description: ""

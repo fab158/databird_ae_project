@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: int_order_items_event_enriched
+    description: > 
+       Table de la couche intermediate. Cette table sert à denormaliser les données , et enrichir les données de nouvelles variables dérivées
+       => La granularité la plus fine ici est la ligne de facture
+    columns:
+      - name: order_id
+        description: ""
+
+      - name: order_date
+        description: ""
+
+      - name: order_status
+        description: ""
+
+      - name: required_date
+        description: ""
+
+      - name: shipped_date
+        description: ""
+
+      - name: shipment_status
+        description: ""
+
+      - name: shipment_type
+        description: ""
+
+      - name: customer_id
+        description: ""
+
+      - name: staff_id
+        description: ""
+
+      - name: item_id
+        description: ""
+
+      - name: product_id
+        description: ""
+
+      - name: quantity
+        description: ""
+
+      - name: list_price
+        description: ""
+
+      - name: discount
+        description: ""
+
+      - name: order_item_total
+        description: ""
+
+      - name: order_item_discount
+        description: ""
+
+      - name: order_item_without_discount
+        description: ""
+
+      - name: stock_id
+        description: ""
+
+      - name: stock_qty_in_store
+        description: ""
+
+      - name: order_store_id
+        description: ""
+
+      - name: order_store_name
+        description: ""
+
+      - name: order_store_city
+        description: ""
+
+      - name: order_store_state
+        description: ""
+
+      - name: order_zip_code
+        description: ""
