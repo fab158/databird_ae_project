@@ -9,11 +9,11 @@
 ## 2. Modélisation des données 
 - Le projet est organisé selon les 3 couches suivantes :
    
-    - **Staging**
+### Staging
     
         ***Objectif***
 
-        -  Permet de formatter/normaliser le format des données issues du systeme  transactionnel de localbike et renommer eventuellement les variables
+        - Permet de formatter/normaliser le format des données issues du systeme  transactionnel de localbike et renommer eventuellement les variables
         
          ***Caracteristiques***
 
@@ -21,7 +21,7 @@
         - Les fichiers sont nommés comme suit : *stg_[source]__[entity]s.sql* 
         - Pas de jointure a ce niveau. Choix ici de cast explicite.
          
-    - **Intermediate**
+### Intermediate 
 
         ***Objectif***
 
@@ -35,18 +35,17 @@
             -**enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
             -**summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
      *
-
-     - **Mart**
+### Mart 
             
-         ***Objectif***
+ #### *Objectif*       
 
-            -  Permet de preparer les données pour le reporting en effectuant un focus sur un metier / axe d'analyse
+    -  Permet de preparer les données pour le reporting en effectuant un focus sur un metier / axe d'analyse
        
-         ***Caractaristiques***
+ #### *Caractaristiques*         
 
-            - Materialisation des données sous forme de table
-            - Possede un niveau de granualrite specifique et une periodicité de rafraichissement
-            - Ajout de colonnes d'audit (macro dediée) 
+    - Materialisation des données sous forme de table
+    - Possede un niveau de granualrite specifique et une periodicité de rafraichissement
+    - Ajout de colonnes d'audit (macro dediée) 
              
 
 ## 3. Implémentation des tests et documentation 
