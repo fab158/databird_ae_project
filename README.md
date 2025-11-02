@@ -51,13 +51,15 @@ Le projet est organisé selon les 3 couches suivantes :
      
 - Test systematique des identifiants uniques pour toutes couches.
 - Ajout de biblioteques tierces (dbt_utils / dbt_expectations) pour des tests plus avancés
+
+![resultat du build](images/test_exec.png)  
         
  #### *3.2 Documentation* 
 
 - Documentation exhaustive des variables sur la couche staging.
 - Documentation des apports/caracteristique des couches intermediate et mart via fichier .md
 
-## 4 . Centralisation du parametrage
+## 4 . Parametrage global
 
  #### *4.1 dbt_project* 
 - Definition de la materialisation des differentes couches et des tags associés à chaque couche
@@ -67,5 +69,7 @@ Le projet est organisé selon les 3 couches suivantes :
 - Définition du **code owner**.
 - Template pour les **pull requests**.
 
+ #### *4.3 performances.yml*  
+- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont rélisés sur les tables --> couche mart.Preferable realise plan exec prealable.
 
 ## 5. Visualisation et partage 
