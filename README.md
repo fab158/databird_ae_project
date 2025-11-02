@@ -51,6 +51,8 @@ Le projet est organisé selon les 3 couches suivantes :
      
 - Test systematique des identifiants uniques pour toutes couches.
 - Ajout de biblioteques tierces (dbt_utils / dbt_expectations) pour des tests plus avancés
+
+![resultat du build](images/test_exec.png)  
         
  #### *3.2 Documentation* 
 
