@@ -6,105 +6,79 @@ models:
     
     columns:
       - name: customer_id
-        data_type: string
         description: ""
 
       - name: first_name
-        data_type: string
         description: ""
 
       - name: last_name
-        data_type: string
         description: ""
 
       - name: city
-        data_type: string
         description: ""
 
       - name: state
-        data_type: string
         description: ""
 
       - name: zip_code
-        data_type: int64
         description: ""
 
       - name: nb_orders
-        data_type: int64
         description: ""
 
       - name: first_order
-        data_type: date
         description: ""
 
       - name: last_order
-        data_type: date
         description: ""
 
       - name: max_quantity_in_order
-        data_type: int64
         description: ""
 
       - name: max_diff_products_in_order
-        data_type: int64
         description: ""
 
       - name: nb_orders_shipped
-        data_type: int64
         description: ""
 
       - name: nb_orders_not_shipped
-        data_type: int64
         description: ""
 
       - name: total_quantity_shipped
-        data_type: int64
         description: ""
 
       - name: total_quantity_not_shipped
-        data_type: int64
         description: ""
 
       - name: max_shipped_quantity
-        data_type: int64
         description: ""
 
       - name: max_not_shipped_quantity
-        data_type: int64
         description: ""
 
       - name: nb_on_time_orders
-        data_type: int64
         description: ""
 
       - name: nb_late_orders
-        data_type: int64
         description: ""
 
       - name: nb_shipped_on_time_orders
-        data_type: int64
         description: ""
 
       - name: nb_shipped_late_orders
-        data_type: int64
         description: ""
 
       - name: lifetime_days
-        data_type: int64
         description: ""
 
       - name: avg_delay_between_shipped_orders
-        data_type: float64
         description: ""
 
       - name: customer_segment
-        data_type: string
         description: ""
 
       - name: dbt_created_at
-        data_type: datetime
         description: ""
 
       - name: dbt_updated_at
-        data_type: datetime
         description: ""
