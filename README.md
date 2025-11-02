@@ -10,19 +10,19 @@
 
 Le projet est organisé selon les 3 couches suivantes :
    
-### Couche <<Staging>>
-    
- #### *Objectif*   
+### 2.1 Couche Staging
+
+ ####  *Objectif*   
 
         - Permet de formatter/normaliser le format des données issues du systeme  transactionnel de localbike et renommer eventuellement les variables
         
-         ***Caracteristiques***
+ ####  *Caractaristiques*   
 
         - Organisation des fichiers par source
         - Les fichiers sont nommés comme suit : *stg_[source]__[entity]s.sql* 
         - Pas de jointure a ce niveau. Choix ici de cast explicite.
          
-### Couche <<Intermediate>> 
+### 2.2 Couche Intermediate
 
  #### *Objectif*   
         -  Permet de faire de faires des transformations metiers intermediaire. Permet de factoriser et harmoniser les transformations pour les couches suivantes
@@ -34,7 +34,7 @@ Le projet est organisé selon les 3 couches suivantes :
     -**enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
     -**summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
      
-### Couche <<Mart>> 
+### 2.3 Couche Mart
             
  #### *Objectif*       
 -  Permet de preparer les données pour le reporting en effectuant un focus sur un metier / axe d'analyse
