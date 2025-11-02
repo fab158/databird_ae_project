@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+
 
 WITH default_calendar  AS (
     SELECT

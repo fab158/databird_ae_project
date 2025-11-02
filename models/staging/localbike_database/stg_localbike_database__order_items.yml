@@ -11,6 +11,7 @@ models:
     
     columns:
       - name: order_id
+        description: Identifiant de la commande
         data_tests:
           - relationships:
               arguments:
@@ -18,12 +19,17 @@ models:
                 field: order_id 
       
       - name: product_id
+        description: Identifiant du produit commandé
         data_tests:
           - relationships:
               arguments:
                 to: ref('stg_localbike_database__products')
                 field: product_id
 
+      - name: list_price
+        description: "Prix unitaire"
+        tests:
+          - not_null
 
       - name: quantity
         description: Quantite commandée
@@ -32,4 +38,12 @@ models:
               arguments:
                 min_value: 0
                 inclusive: false
+
+      - name: discount
+        description: Taux de remise appliqué sur cette ligne de commande
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
    

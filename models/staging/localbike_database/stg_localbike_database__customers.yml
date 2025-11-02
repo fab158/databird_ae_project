@@ -5,7 +5,7 @@ models:
         les données issues du systeme transactionnel de localbike
     columns:
       - name: customer_id
-        description: cle identifiant le client issue du systeme source
+        description:  identifiant du client issue du systeme source
         data_tests:
           - not_null
           - unique
@@ -23,7 +23,7 @@ models:
       - name: Telephone du client
         description: >
            Telephone du client (donnee personnelle soumise au rgpd )
-           Ici la balise sensitive est purement declarative mais dans un contexte réél pourrait etre utilise dans une macro 
+           Ici la balise sensitive est purement declarative mais dans un contexte réél pourrait etre utilise par une macro 
            La donnée sera anomysee (cf. macro anomymise_column)
         meta:
           sensitive: true

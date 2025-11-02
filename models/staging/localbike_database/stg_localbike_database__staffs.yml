@@ -1,40 +1,46 @@
 models:
   - name: stg_localbike_database__staffs.
-    description: Customer data with basic cleaning and normalization.
+    description: > 
+        Table de staging des employes permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
     columns:
       - name: staff_id
-        description: The unique key for each customer.
+        description: Identifiant unique de l’employé
         data_tests:
           - not_null
           - unique
       - name: first_name
+        description: Prénom de l’employé
         data_tests:
           - not_null
        
       - name: last_name
-        description: The unique key for each customer.
+        description: Nom de l'employé
         data_tests:
           - not_null
       
       - name: email
-        description: The unique key for each customer.
+        description: email professionnel de l'employé
         data_tests:
           - not_null
+
       - name: phone
-        description: The unique key for each customer.
+        description: Téléphone professionnel de l'employé
         data_tests:
           - not_null
+          
       - name: active
-        description: The unique key for each customer.
+        description: employé actif/inactif
+
       - name: store_id
-        description: The unique key for each customer.
-      - name: store_id
+        description: Identifiant du magasin de l'employé
         data_tests:
           - relationships:
               arguments:
                 to: ref('stg_localbike_database__stores')
                 field: store_id
+
       - name: manager_id
-        description: The unique key for each customer.
+        description: Identifiant du manager de l’employé
    
       

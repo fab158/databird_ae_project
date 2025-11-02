@@ -5,7 +5,7 @@ models:
         les données issues du systeme transactionnel de localbike
     columns:
       - name: category_id
-        description: Cle identifiant chaque categorie
+        description: Cle identifiant chaque categorie de produit
         data_tests:
           - not_null
           - unique

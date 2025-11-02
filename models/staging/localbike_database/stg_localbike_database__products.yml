@@ -1,31 +1,42 @@
 models:
   - name: stg_localbike_database__products
-    description: bikes .
+    description: > 
+        Table de staging des produits permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
     columns:
       - name: product_id
-        description: The unique key for each product.
+        description: Identifiant unique du produit.
         data_tests:
           - not_null
           - unique
+
       - name: product_name
-        description: Product name unique in his category
+        description: Nom du produit
            - not_null
+
       - name: brand_id
+        description: Identifiant de la marque du produit
         data_tests:
           - relationships:
               arguments:
                 to: ref('stg_localbike_database__brands')
                 field: brand_id
+
       - name: category_id
+        description: Identifiant de la categorie du produit
         data_tests:
           - relationships:
               arguments:
                 to: ref('stg_localbike_database__categories')
                 field: category_id
+
+      - name: list_price
+        description: Prix unitaire
+        tests:
+          - not_null
+
       - name: model_year
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              arguments:
-                min_value: "{{ var('default_min_year') }}" 
-                max_value: "{{ var('default_max_year') }}" 
-     
+        description: Année du modèle du produit
+        tests:
+          - not_null
+    
