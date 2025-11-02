@@ -8,12 +8,14 @@ models:
         data_tests:
           - not_null
           - accepted_values:
-              values: ['SHIPPED', 'NOT_SHIPPED']
+              arguments: 
+                values: ['SHIPPED', 'NOT_SHIPPED']
 
       - name: shipment_type
         data_tests:
           - accepted_values:
-              values: ['ON_TIME_ORDER', 'LATE_ORDER', "{{ var('default_string_not_applicable') }}" ]
+              arguments: 
+                values: ['ON_TIME_ORDER', 'LATE_ORDER', "{{ var('default_string_not_applicable') }}" ]
       
       - name: order_item_total
         tests:
