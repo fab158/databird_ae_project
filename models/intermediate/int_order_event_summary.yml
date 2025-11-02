@@ -11,7 +11,8 @@ models:
 
     data_tests:
       - dbt_expectations.expect_table_aggregation_to_equal_other_table:
-          expression: sum(total_amount_order)
-          compare_model: ref("int_order_items_event_enriched")
-          compare_expression: sum(order_item_total)
-          group_by: [order_id]
+          arguments: 
+            expression: sum(total_amount_order)
+            compare_model: ref("int_order_items_event_enriched")
+            compare_expression: sum(order_item_total)
+            group_by: [order_id]
