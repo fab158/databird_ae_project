@@ -2,64 +2,16 @@ version: 2
 
 models:
   - name: int_order_event_summary
-    description: > 
-       Table de la couche intermediate. Cette table sert à faire un recapitulatif les données au niveau de la commande.
-       => La granularité la plus fine ici est la commande
+    description:  '{{ doc("int_order_event_summary") }}'
     columns:
       - name: order_id
-        description: ""
+        data_tests:
+          - not_null
+          - unique
 
-      - name: order_date
-        description: ""
-
-      - name: order_status
-        description: ""
-
-      - name: required_date
-        description: ""
-
-      - name: shipped_date
-        description: ""
-
-      - name: shipment_status
-        description: ""
-
-      - name: shipment_type
-        description: ""
-
-      - name: item_id_nb
-        description: ""
-
-      - name: quantity_order
-        description: ""
-
-      - name: discount_order
-        description: ""
-
-      - name: total_amount_order
-        description: ""
-
-      - name: total_without_discount
-        description: ""
-
-      - name: order_store_id
-        description: ""
-
-      - name: order_store_name
-        data_type: string
-
-
-      - name: order_store_city
-        description: ""
-
-      - name: order_store_state
-        description: ""
-
-      - name: order_zip_code
-        description: ""
-
-      - name: customer_id
-        description: ""
-
-      - name: staff_id
-        description: ""
+    data_tests:
+      - dbt_expectations.expect_table_aggregation_to_equal_other_table:
+          expression: sum(total_amount_order)
+          compare_model: ref("int_order_items_event_enriched")
+          compare_expression: sum(order_item_total)
+          group_by: [order_id]
