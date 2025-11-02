@@ -1,8 +1,8 @@
 models:
   - name: stg_localbike_database__stocks
     description: > 
-        Table de staging des stocks permettant de formatter/normaliser 
-        les données issues du systeme transactionnel de localbike
+        Modele de staging des stocks permettant de formatter/normaliser 
+        le format des données issus du systeme transactionnel de localbike
     columns:
       - name: product_id
         description: cle etrangere liée au produit.
