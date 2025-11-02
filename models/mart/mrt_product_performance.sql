@@ -1,3 +1,6 @@
+{{ config(
+    tags=['weekly']
+) }}
 SELECT
     prd.product_id,
     prd.product_name,

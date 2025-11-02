@@ -1,6 +1,6 @@
-{% docs mrt_customer_profile %}
+{% docs mrt_product_performance %}
 
-- **Modele mrt_customer_profile**
+- **Modele mrt_product_performance**
 
 - **Description** :
 

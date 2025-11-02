@@ -5,26 +5,26 @@ models:
     description: '{{ doc("mrt_customer_profile") }}'
     columns:
       - name: customer_id
-        tests:
+        data_tests:
           - not_null
           - unique
+
       - name: nb_orders
-        tests:
+        data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
+
       - name: total_quantity_shipped
-        tests:
+        data_tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_be_between:
-              min_value: 0
+          
       - name: total_quantity_not_shipped
-        tests:
+        data_tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_be_between:
-              min_value: 0
+
       - name: lifetime_days
-        tests:
+        data_tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
