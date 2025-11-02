@@ -2,9 +2,9 @@
 
 ## 1. Définir les axes d’analyse 
 
-    - Avoir une meilleure vision des ventes quotidiennes par magasins
-    - Mieux comprendre les clients de localbike
-    - Etudier la performance des produits vendus par Localbike
+- Avoir une meilleure vision des ventes quotidiennes par magasins
+- Mieux comprendre les clients de localbike
+- Etudier la performance des produits vendus par Localbike
 
 ## 2. Modélisation des données 
 
@@ -14,25 +14,25 @@ Le projet est organisé selon les 3 couches suivantes :
 
  ####  *Objectif*   
 
-        - Permet de formatter/normaliser le format des données issues du systeme  transactionnel de localbike et renommer eventuellement les variables
+- Permet de formatter/normaliser le format des données issues du systeme  transactionnel de localbike et renommer eventuellement les variables
         
  ####  *Caractaristiques*   
 
-        - Organisation des fichiers par source
-        - Les fichiers sont nommés comme suit : *stg_[source]__[entity]s.sql* 
-        - Pas de jointure a ce niveau. Choix ici de cast explicite.
+- Organisation des fichiers par source
+- Les fichiers sont nommés comme suit : *stg_[source]__[entity]s.sql* 
+- Pas de jointure a ce niveau. Choix ici de cast explicite.
          
 ### 2.2 Couche Intermediate
 
  #### *Objectif*   
-        -  Permet de faire de faires des transformations metiers intermediaire. Permet de factoriser et harmoniser les transformations pour les couches suivantes
+- Permet de faire de faires des transformations metiers intermediaire. Permet de factoriser et harmoniser les transformations pour les couches suivantes
        
 #### *Caractaristiques* 
 - Les fichiers sont nommés comme suit :  [entity]s_[verb]s.sql
 - Dans le cadre du projet 3 types de tranfo :
-    -**joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
-    -**enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
-    -**summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
+-**joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
+-**enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
+-**summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
      
 ### 2.3 Couche Mart
             
