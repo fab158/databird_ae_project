@@ -36,10 +36,10 @@ Le projet est organisé selon les 3 couches suivantes :
      
 ### 2.3 Couche Mart
             
- #### *Objectif*       
+ #### *2.3.1 Objectif*       
 -  Permet de preparer les données pour le reporting en effectuant un focus sur un metier / axe d'analyse
        
- #### *Caracteristiques*         
+ #### *2.3.2 Caracteristiques*         
 - Materialisation des données sous forme de table
 - Possede un niveau de granualrite specifique et une periodicité de rafraichissement
 - Ajout de colonnes d'audit (macro dediée) 
@@ -47,23 +47,23 @@ Le projet est organisé selon les 3 couches suivantes :
 
 ## 3. Implémentation des tests et documentation 
 
- #### *Tests* 
+ #### *3.1 Tests* 
      
 - Test systematique des identifiants uniques pour toutes couches.
 - Ajout de biblioteques tierces (dbt_utils / dbt_expectations) pour des tests plus avancés
         
- #### *Documentation* 
+ #### *3.2 Documentation* 
 
 - Documentation exhaustive des variables sur la couche staging.
 - Documentation des apports/caracteristique des couches intermediate et mart via fichier .md
 
 ## 4 . Centralisation du parametrage
 
- #### *dbt_project* 
+ #### *4.1 dbt_project* 
 - Definition de la materialisation des differentes couches et des tags associés à chaque couche
 - Centralisation des variables (NA/UK/ND). Entendu pour generation du claendrier dynamique
 
- #### *github.yml*          
+ #### *4.2 github.yml*          
 - Définition du **code owner**.
 - Template pour les **pull requests**.
 
