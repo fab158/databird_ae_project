@@ -1,8 +1,8 @@
 models:
   - name: stg_localbike_database__order_items
     description: > 
-        Table de staging des lignes de commandes permettant de formatter/normaliser 
-        les données issues du systeme transactionnel de localbike
+        Modele de staging des lignes de commandes permettant de formatter/normaliser 
+        le format des données issus du systeme transactionnel de localbike
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:

@@ -1,8 +1,8 @@
 models:
   - name: stg_localbike_database__categories
     description: > 
-        Table de staging des categories de produit permettant de formatter/normaliser 
-        les données issues du systeme transactionnel de localbike
+        Modele de staging des categories de produit permettant de formatter/normaliser 
+        le format des données issus du systeme transactionnel de localbike
     columns:
       - name: category_id
         description: Cle identifiant chaque categorie de produit
