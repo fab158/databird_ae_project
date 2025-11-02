@@ -23,7 +23,7 @@
         description: Date prévue pour la livraison de la commande.
 
       - name: shipped_date
-        description: Date réelle d expédition de la commande (peut être nulle si non expédiée)
+        description: Date réelle d expédition de la commande 
       
       - name: store_id
         description: Identifiant du magasin associé à la commande
