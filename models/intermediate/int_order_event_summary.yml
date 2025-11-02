@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_order_event_summary
-    description:  '{{ doc("int_order_event_summary") }}'
+    description: '{{ doc("int_order_event_summary") }}'
     columns:
       - name: order_id
         data_tests:
