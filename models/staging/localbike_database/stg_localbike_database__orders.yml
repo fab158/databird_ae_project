@@ -4,11 +4,17 @@
         Table de staging des commandes permettant de formatter/normaliser 
         les données issues du systeme transactionnel de localbike
     columns:
-      - name: order_status
-        description: The unique key for each product.
+      - name: order_id
+        description: Clé identifiant chaque commande.
         data_tests:
-          - dbt_utils.accepted_range:
-              arguments:
-                min_value: 0
-                inclusive: false
-   
+          - not_null
+          - unique
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: order_status
+        data_tests:
+          - not_null
+      - name: order_date
+        data_tests:
+          - not_null

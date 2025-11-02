@@ -17,6 +17,6 @@ models:
         data_tests:
           - not_null
 
-      - name: store_id
+      - name: employee_store_id
         data_tests:
           - not_null
