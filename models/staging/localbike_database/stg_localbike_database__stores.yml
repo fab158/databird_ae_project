@@ -1,22 +1,27 @@
 version: 2
 models:
   - name: stg_localbike_database__stores
-    description: "Table source brute contenant les informations des magasins."
+    description: > 
+        Table de staging des magasins permettant de formatter/normaliser 
+        les données issues du systeme transactionnel de localbike
     columns:
       - name: store_id
-        description: "Identifiant unique du magasin."
+        description: Identifiant unique du magasin
         data_tests:
           - not_null
           - unique
+
       - name: store_name
-        description: "Nom du magasin."
+        description: Nom du magasin
         data_tests:
           - not_null
+
       - name: state
-        description: "État ou région du magasin."
+        description: État ou région du magasin
         data_tests:
           - not_null
+          
       - name: zip_code
-        description: "Code postal du magasin."
+        description: Code postal du magasin
         data_tests:
           - not_null

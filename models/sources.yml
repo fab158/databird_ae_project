@@ -3,23 +3,23 @@ version: 2
 sources:
   - name: localbike_database
     schema: raw_localbike
-    description: sales data coming from the transactional system
+    description: Données issues du système transactionnel de l’entreprise localbike
     tables:
       - name: customers
-        description: One record per person who has purchased one or more items
+        description: Données client
       - name: stores
-        description: Contains information about each store location
+        description: Référentiel des magasins
       - name: staffs
-        description: Contains information about company staff members
+        description: Données sur le personnel
       - name: orders
-        description: One record per order
+        description: Historique des commandes passées
       - name: order_items
-        description: Items included in an order
+        description: Détail des commandes
       - name: products
-        description: Contains all information about the products
+        description: Catalogue produits
       - name: categories
-        description: One record per product category
+        description: Liste des catégories produits 
       - name: stocks
-        description: Tracks available quantities for each product
+        description: Niveaux de stock disponibles par produit et par magasin
       - name: brands
-        description: Contains information about product brands
+        description: marques de produits localbike
