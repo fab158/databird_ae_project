@@ -2,54 +2,21 @@ version: 2
 
 models:
   - name: int_staffs_joined
-    description: > 
-       Table de la couche intermediate. Cette table sert à denormaliser les données des employes.
-       Il s'agit donc ici de mettre a plat les informations liées aux employes . 
-       Notemment la relation reflexive avec le manager.
-       Cette agregation pourra etre ensuite etre reutilisée par les couches superieures
-       => La granularité la plus fine ici est le produit
+    description: '{{ doc("int_staffs_joined") }}'    
     columns:
       - name: employee_id
-        description: ""
+        data_tests:
+          - unique
+          - not_null
 
       - name: employee_first_name
-        description: ""
+        data_tests:
+          - not_null
 
       - name: employee_last_name
-        description: ""
+        data_tests:
+          - not_null
 
-      - name: employee_email
-        description: ""
-
-      - name: employee_active
-        description: ""
-
-      - name: employee_store_id
-        description: ""
-
-      - name: employee_store
-        description: ""
-
-      - name: employee_store_city
-        description: ""
-
-      - name: employee_zip_code
-        description: ""
-
-      - name: employee_state
-        description: ""
-
-      - name: manager_id
-        description: ""
-
-      - name: manager_first_name
-        description: ""
-
-      - name: manager_last_name
-        description: ""
-
-      - name: manager_email
-        description: ""
-
-      - name: manager_store_id
-        description: ""
+      - name: store_id
+        data_tests:
+          - not_null
