@@ -1,5 +1,5 @@
 models:
-  - name: stg_localbike_database__staffs.
+  - name: stg_localbike_database__staffs
     description: > 
         Table de staging des employes permettant de formatter/normaliser 
         les données issues du systeme transactionnel de localbike
