@@ -1,16 +1,16 @@
-WITH sales_by_product AS (
+{{ config(
+    tags=['daily']
+) }}
+WITH sales_by_store AS (
     SELECT
         DATE(evt.order_date) AS order_date,
         evt.order_store_id,
         evt.order_store_name,
-        evt.product_id,
-        prd.product_name,
-        prd.category_name,
-        prd.brand_name,
         evt.order_store_city,
         evt.order_store_state,
         SUM(evt.order_item_total) AS total_orders,
         SUM(evt.quantity) AS total_quantities,
+        COUNT(DISTINCT evt.product_id) AS nb_products,
         SUM(evt.order_item_discount) AS orders_discount,
         SUM(evt.order_item_without_discount) AS orders_without_discount,
         COUNT(DISTINCT order_id) AS order_nb
@@ -25,7 +25,7 @@ last_sales_date AS(
     SELECT 
         max(order_date) as max_order_date
     FROM 
-        sales_by_product
+        sales_by_store
 ),
 restricted_years_calendar as (
     SELECT
@@ -59,9 +59,6 @@ SELECT
     
     sls.order_store_id,
     sls.order_store_name,
-    sls.product_id,
-    sls.product_name,
-    sls.category_name,
     sls.order_store_city,
     sls.order_store_state,
     COALESCE(sls.total_orders, 0) AS total_sales,
@@ -70,6 +67,6 @@ SELECT
     {{ add_metadata_columns() }} 
 
  FROM restricted_years_calendar dte
- LEFT JOIN sales_by_product sls
+ LEFT JOIN sales_by_store sls
     ON sls.order_date = dte.full_date
  ORDER BY full_date DESC

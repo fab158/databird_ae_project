@@ -2,8 +2,7 @@ version: 2
 
 models:
   - name: int_calendar
-    description: > 
-       
+    description: '{{ doc("int_calendar") }}' 
     columns:
       - name: full_date
         description: "date complete"

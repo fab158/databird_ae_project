@@ -2,67 +2,10 @@ version: 2
 
 models:
   - name: mrt_orders_summary_daily
-    description: ""
-    columns:
-      - name: full_date
-        description: ""
-
-      - name: date_key
-        description: ""
-
-      - name: year
-        description: ""
-
-      - name: month
-        description: ""
-
-      - name: day
-        description: ""
-
-      - name: day_of_week
-        description: ""
-
-      - name: day_name
-        description: ""
-
-      - name: quarter_label
-        description: ""
-
-      - name: season
-        description: ""
-
-      - name: order_store_id
-        description: ""
-
-      - name: order_store_name
-        description: ""
-
-      - name: product_id
-        description: ""
-
-      - name: product_name
-        description: ""
-
-      - name: category_name
-        description: ""
-
-      - name: order_store_city
-        description: ""
-
-      - name: order_store_state
-        description: ""
-
-      - name: total_sales
-        description: ""
-
-      - name: total_quantities
-        description: ""
-
-      - name: total_sales_discount
-        description: ""
-
-      - name: dbt_created_at
-        description: ""
-
-      - name: dbt_updated_at
-        description: ""
+    description: '{{ doc("mrt_orders_summary_daily") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - full_date
+            - order_store_id
+   

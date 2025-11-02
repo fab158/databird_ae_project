@@ -1,5 +1,4 @@
-
-
+{{ config(materialized='table') }}
 WITH default_calendar  AS (
     SELECT
         PARSE_DATE('%Y-%m-%d', CONCAT({{ var('default_min_year') }}, '-01-01'))      AS default_min_date,

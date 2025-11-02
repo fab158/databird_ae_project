@@ -1,3 +1,6 @@
+{{ config(
+    tags=['weekly']
+) }}
 WITH customer_metrics AS (
     SELECT
         customer_id,

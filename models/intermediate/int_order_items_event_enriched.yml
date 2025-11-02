@@ -3,8 +3,7 @@ version: 2
 models:
   - name: int_order_items_event_enriched
     description:  '{{ doc("int_order_items_event_enriched") }}'
-    columns:
-          
+    columns:  
       - name: shipment_status
         data_tests:
           - not_null
