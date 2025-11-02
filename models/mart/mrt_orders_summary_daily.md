@@ -8,9 +8,11 @@
 - Ce modele decrit les ventes par produit et magasin
 
 - **Granularité** :
+
 La granularité ici est une ligne par jour de l'année et magasin sur les deux années glissantes 
 
-- **Taux de Rafraichissement** :
+- **Periodicité de Rafraichissement** :
+
 Ce modéle est rafraichi tout les jours
 
 {% enddocs %}
