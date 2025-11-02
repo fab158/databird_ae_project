@@ -2,83 +2,29 @@ version: 2
 
 models:
   - name: mrt_customer_profile
-    description: ""
-    
+    description: '{{ doc("mrt_customer_profile") }}'
     columns:
       - name: customer_id
-        description: ""
-
-      - name: first_name
-        description: ""
-
-      - name: last_name
-        description: ""
-
-      - name: city
-        description: ""
-
-      - name: state
-        description: ""
-
-      - name: zip_code
-        description: ""
-
+        tests:
+          - not_null
+          - unique
       - name: nb_orders
-        description: ""
-
-      - name: first_order
-        description: ""
-
-      - name: last_order
-        description: ""
-
-      - name: max_quantity_in_order
-        description: ""
-
-      - name: max_diff_products_in_order
-        description: ""
-
-      - name: nb_orders_shipped
-        description: ""
-
-      - name: nb_orders_not_shipped
-        description: ""
-
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
       - name: total_quantity_shipped
-        description: ""
-
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
       - name: total_quantity_not_shipped
-        description: ""
-
-      - name: max_shipped_quantity
-        description: ""
-
-      - name: max_not_shipped_quantity
-        description: ""
-
-      - name: nb_on_time_orders
-        description: ""
-
-      - name: nb_late_orders
-        description: ""
-
-      - name: nb_shipped_on_time_orders
-        description: ""
-
-      - name: nb_shipped_late_orders
-        description: ""
-
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
       - name: lifetime_days
-        description: ""
-
-      - name: avg_delay_between_shipped_orders
-        description: ""
-
-      - name: customer_segment
-        description: ""
-
-      - name: dbt_created_at
-        description: ""
-
-      - name: dbt_updated_at
-        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
