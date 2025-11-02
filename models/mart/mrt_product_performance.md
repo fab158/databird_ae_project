@@ -12,6 +12,9 @@
 
 
 - **Granularité** :
-La granularité ici est une ligne par client
+La granularité ici est une ligne par produit
+
+**Taux de Rafraichissement** :
+Ce modéle est rafraichi tout les semaines
 
 {% enddocs %}
