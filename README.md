@@ -80,4 +80,5 @@ Dans le cadre du projet 3 types de tranfo :
 
  #### *5.2 analyse des clients*  
 ![Analyse des ventes](images/dash_customers.png)  
-Possibilité de faire du drill down sur le client
+
+*Possibilité de faire du drill down sur le client et de naviguer par region typoligie de client*
