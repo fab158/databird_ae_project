@@ -74,4 +74,5 @@ Le projet est organisé selon les 3 couches suivantes :
 
 ## 5. Visualisation et partage 
 
+ #### *5.1 analyse des ventes*  
 ![Analyse des ventes](images/dash_ventes.png)  
