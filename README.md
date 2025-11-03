@@ -28,8 +28,8 @@ Le projet est organisé selon les 3 couches suivantes :
 - Permet de faire de faires des transformations metiers intermediaire. Permet de factoriser et harmoniser les transformations pour les couches suivantes
        
 #### *2.2.2 Caracteristiques* 
-- Les fichiers sont nommés comme suit :  *[entity]s_[verb]s.sql*
-- Dans le cadre du projet 3 types de tranfo :
+Les fichiers sont nommés comme suit :  *[entity]s_[verb]s.sql*
+Dans le cadre du projet 3 types de tranfo :
 - **joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
 - **enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
 - **summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
@@ -77,3 +77,7 @@ Le projet est organisé selon les 3 couches suivantes :
 
  #### *5.1 analyse des ventes*  
 ![Analyse des ventes](images/dash_ventes.png)  
+
+ #### *5.2 analyse des clients*  
+![Analyse des ventes](images/dash_customers.png)  
+Possibilité de faire du drill down sur le client
