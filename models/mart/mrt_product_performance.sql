@@ -1,5 +1,6 @@
 {{ config(
-    tags=['weekly']
+    tags=['weekly'],
+    on_schema_change='sync_all_columns'
 ) }}
 SELECT
     prd.product_id,
