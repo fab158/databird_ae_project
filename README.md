@@ -28,11 +28,11 @@ Le projet est organisé selon les 3 couches suivantes :
 - Permet de faire de faires des transformations metiers intermediaire. Permet de factoriser et harmoniser les transformations pour les couches suivantes
        
 #### *2.2.2 Caracteristiques* 
-- Les fichiers sont nommés comme suit :  [entity]s_[verb]s.sql
+- Les fichiers sont nommés comme suit :  *[entity]s_[verb]s.sql*
 - Dans le cadre du projet 3 types de tranfo :
--**joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
--**enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
--**summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
+- **joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
+- **enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
+- **summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
      
 ### 2.3 Couche Mart
             
@@ -61,16 +61,17 @@ Le projet est organisé selon les 3 couches suivantes :
 
 ## 4 . Parametrage global
 
- #### *4.1 dbt_project* 
+ #### *4.1 dbt_project.yml* 
 - Definition de la materialisation des differentes couches et des tags associés à chaque couche
 - Centralisation des variables (NA/UK/ND). Entendu pour generation du claendrier dynamique
 
- #### *4.2 github.yml*          
+ #### *4.2 github et CI*          
 - Définition du **code owner**.
 - Template pour les **pull requests**.
+- Job de CI *dbt cloud* déclenché à la PR
 
- #### *4.3 performances.yml*  
-- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont rélisés sur les tables --> couche mart.Preferable realise plan exec prealable.
+ #### *4.3 performances*  
+- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont rélisés sur les tables -> couche mart.Preferable realise plan exec prealable.
 
 ## 5. Visualisation et partage 
 
