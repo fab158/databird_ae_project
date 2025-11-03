@@ -73,3 +73,6 @@ Le projet est organisé selon les 3 couches suivantes :
 - Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont rélisés sur les tables --> couche mart.Preferable realise plan exec prealable.
 
 ## 5. Visualisation et partage 
+
+ #### *5.1 analyse des ventes*  
+![Analyse des ventes](images/dash_ventes.png)  
