@@ -65,20 +65,20 @@ Dans le cadre du projet 3 types de tranfo :
 - Definition de la materialisation des differentes couches et des tags associés à chaque couche
 - Centralisation des variables (NA/UK/ND). Entendu pour generation du calendrier dynamique
 
- #### *4.2 github et CI*          
+ #### *4.2 Github et CI*          
 - Définition du **code owner**.
 - Template pour les **pull requests**.
 - Job de CI *dbt cloud* déclenché à la PR
 
- #### *4.3 performances*  
+ #### *4.3 Performances*  
 - Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont réalisés sur les tables -> donc notemment la couche mart.Preferable realise plan exec prealable.
 
 ## 5. Visualisation et partage 
 
- #### *5.1 analyse des ventes*  
+ #### *5.1 Analyse des ventes*  
 ![Analyse des ventes](images/dash_ventes.png)  
 
- #### *5.2 analyse des clients*  
+ #### *5.2 Analyse des clients*  
 ![Analyse des ventes](images/dash_customers.png)  
 
 *Possibilité de faire du drill down sur le client, de naviguer par region, typologie de client*
