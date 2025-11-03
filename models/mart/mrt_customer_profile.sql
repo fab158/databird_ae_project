@@ -19,7 +19,10 @@ WITH customer_metrics AS (
         COUNTIF(shipment_type = 'LATE_ORDER') AS nb_late_orders,
         COUNTIF(shipment_status = 'SHIPPED' AND shipment_type = 'ON_TIME_ORDER') AS nb_shipped_on_time_orders,
         COUNTIF(shipment_status = 'SHIPPED' AND shipment_type = 'LATE_ORDER') AS nb_shipped_late_orders,
-        DATE_DIFF(CURRENT_DATE(), MIN(order_date), DAY) AS lifetime_days
+        DATE_DIFF(CURRENT_DATE(), MIN(order_date), DAY) AS lifetime_days,
+        SUM(total_amount_order) AS total_orders,
+        SUM(IF(shipment_status = 'SHIPPED', total_amount_order, 0)) AS total_orders_shipped,
+        SUM(IF(shipment_status != 'SHIPPED', total_amount_order, 0)) AS total_orders_not_shipped
     FROM {{ ref('int_order_event_summary') }}
     GROUP BY customer_id
 ),
@@ -68,6 +71,9 @@ SELECT
     cmt.nb_shipped_on_time_orders,
     cmt.nb_shipped_late_orders,
     cmt.lifetime_days,
+    cmt.total_orders,
+    cmt.total_orders_not_shipped,
+    cmt.total_orders_shipped,
     IFNULL(adc.avg_delay_between_shipped_orders, 0) AS avg_delay_between_shipped_orders,
     CASE
         WHEN cmt.nb_orders > 1 THEN 'RECURRENT'

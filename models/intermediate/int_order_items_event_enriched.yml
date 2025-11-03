@@ -24,5 +24,6 @@ models:
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - order_id
-            - item_id  
+            arguments: 
+               - order_id
+               - item_id  
