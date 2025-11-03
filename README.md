@@ -3,7 +3,7 @@
 ## 1. Définir les axes d’analyse 
 
 - Avoir une meilleure vision des ventes quotidiennes par magasins
-- Mieux comprendre les clients de localbike
+- Mieux comprendre le comportement des clients de localbike
 - Etudier la performance des produits vendus par Localbike
 
 ## 2. Modélisation des données 
@@ -28,11 +28,11 @@ Le projet est organisé selon les 3 couches suivantes :
 - Permet de faire de faires des transformations metiers intermediaire. Permet de factoriser et harmoniser les transformations pour les couches suivantes
        
 #### *2.2.2 Caracteristiques* 
-- Les fichiers sont nommés comme suit :  [entity]s_[verb]s.sql
-- Dans le cadre du projet 3 types de tranfo :
--**joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
--**enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
--**summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
+Les fichiers sont nommés comme suit :  *[entity]s_[verb]s.sql*
+Dans le cadre du projet 3 types de tranfo :
+- **joined** : Permet de denormaliser les données (kimball) en les mettant a plat autour d'un concept metier. 
+- **enriched** : Realisation de calaculs. AJoute des informations qui pourrant etre utiles a plusieurs analyses
+- **summary** : Aggrege les données a un niveau de granularité spécifique pour que la couche suivante 
      
 ### 2.3 Couche Mart
             
@@ -56,23 +56,29 @@ Le projet est organisé selon les 3 couches suivantes :
         
  #### *3.2 Documentation* 
 
-- Documentation exhaustive des variables sur la couche staging.
-- Documentation des apports/caracteristique des couches intermediate et mart via fichier .md
+- Documentation exhaustive des variables sur la couche *staging*.
+- Documentation des apports/caracteristiques des couches *intermediate* et *mart* via fichier .md
 
 ## 4 . Parametrage global
 
- #### *4.1 dbt_project* 
+ #### *4.1 dbt_project.yml* 
 - Definition de la materialisation des differentes couches et des tags associés à chaque couche
-- Centralisation des variables (NA/UK/ND). Entendu pour generation du claendrier dynamique
+- Centralisation des variables (NA/UK/ND). Entendu pour generation du calendrier dynamique
 
- #### *4.2 github.yml*          
+ #### *4.2 Github et CI*          
 - Définition du **code owner**.
 - Template pour les **pull requests**.
+- Job de CI *dbt cloud* déclenché à la PR
 
- #### *4.3 performances.yml*  
-- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont rélisés sur les tables --> couche mart.Preferable realise plan exec prealable.
+ #### *4.3 Performances*  
+- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont réalisés sur les tables -> donc notemment la couche mart.Preferable realise plan exec prealable.
 
 ## 5. Visualisation et partage 
 
- #### *5.1 analyse des ventes*  
+ #### *5.1 Analyse des ventes*  
 ![Analyse des ventes](images/dash_ventes.png)  
+
+ #### *5.2 Analyse des clients*  
+![Analyse des ventes](images/dash_customers.png)  
+
+*Possibilité de faire du drill down sur le client, de naviguer par region, typologie de client*
