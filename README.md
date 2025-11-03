@@ -3,7 +3,7 @@
 ## 1. Définir les axes d’analyse 
 
 - Avoir une meilleure vision des ventes quotidiennes par magasins
-- Mieux comprendre les clients de localbike
+- Mieux comprendre le comportement des clients de localbike
 - Etudier la performance des produits vendus par Localbike
 
 ## 2. Modélisation des données 
@@ -56,14 +56,14 @@ Dans le cadre du projet 3 types de tranfo :
         
  #### *3.2 Documentation* 
 
-- Documentation exhaustive des variables sur la couche staging.
-- Documentation des apports/caracteristique des couches intermediate et mart via fichier .md
+- Documentation exhaustive des variables sur la couche *staging*.
+- Documentation des apports/caracteristiques des couches *intermediate* et *mart* via fichier .md
 
 ## 4 . Parametrage global
 
  #### *4.1 dbt_project.yml* 
 - Definition de la materialisation des differentes couches et des tags associés à chaque couche
-- Centralisation des variables (NA/UK/ND). Entendu pour generation du claendrier dynamique
+- Centralisation des variables (NA/UK/ND). Entendu pour generation du calendrier dynamique
 
  #### *4.2 github et CI*          
 - Définition du **code owner**.
@@ -71,7 +71,7 @@ Dans le cadre du projet 3 types de tranfo :
 - Job de CI *dbt cloud* déclenché à la PR
 
  #### *4.3 performances*  
-- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont rélisés sur les tables -> couche mart.Preferable realise plan exec prealable.
+- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont réalisés sur les tables -> donc notemment la couche mart.Preferable realise plan exec prealable.
 
 ## 5. Visualisation et partage 
 
