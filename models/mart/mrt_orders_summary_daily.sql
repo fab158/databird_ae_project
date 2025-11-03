@@ -1,5 +1,6 @@
 {{ config(
-    tags=['daily']
+    tags=['daily'],
+    on_schema_change='sync_all_columns'
 ) }}
 WITH sales_by_store AS (
     SELECT
