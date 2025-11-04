@@ -64,23 +64,20 @@ select
     oie.order_item_total,
     oie.order_item_discount,
     oie.order_item_without_discount,
-    
-
     stock_id,
     stk.quantity       as stock_qty_in_store,
-
     sto.store_id       as order_store_id,
     sto.store_name     as order_store_name,
     sto.city           as order_store_city,
     sto.state          as order_store_state,
     sto.zip_code       as order_zip_code
 
-from 
+FROM 
     order_items_enriched oie
-inner join order_enriched ore
-    on oie.order_id = ore.order_id
-inner join {{ ref('stg_localbike_database__stores') }} sto
-    on ore.store_id = sto.store_id
-left join {{ ref('stg_localbike_database__stocks') }} stk
-    on  oie.product_id = stk.product_id
-    and sto.store_id = stk.store_id
+INNER JOIN order_enriched ore
+    ON oie.order_id = ore.order_id
+INNER JOIN {{ ref('stg_localbike_database__stores') }} sto
+    ON ore.store_id = sto.store_id
+LEFT JOIN {{ ref('stg_localbike_database__stocks') }} stk
+    ON  oie.product_id = stk.product_id
+    AND sto.store_id = stk.store_id
