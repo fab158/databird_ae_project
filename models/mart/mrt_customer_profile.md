@@ -10,11 +10,14 @@ Sert à analyser le comportement des clients : commandes, retards, quantités, s
 
 - **Colonnes principales** :
 
-- *nb_orders*: Nombre total de commandes par client.
-- *first_order*: Date de la première commande du client.
-- *last_order* : Date de la dernière commande du client.
-- *max_quantity_in_order* : Quantité maximale commandée dans une seule commande.
-- *max_diff_products_in_order* : Nombre maximum de produits différents dans une seule commande.
+- *nb_orders*: Nombre total de commandes par client
+
+- *first_order*: Date de la première commande du client
+
+- *last_order* : Date de la dernière commande du client
+
+- *max_quantity_in_order* : Quantité maximale commandée dans une seule commande
+- *max_diff_products_in_order* : Nombre maximum de produits différents dans une seule commande
 - *nb_orders_shipped* : Nombre de commandes rééllement expédiées
 - *nb_orders_not_shipped* : Nombre de commandes non expédiées
 - *total_quantity_shipped* : Quantité rééllement expédiées
