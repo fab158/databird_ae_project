@@ -21,5 +21,19 @@ SELECT
 
 FROM 
     {{ ref('int_order_items_event_enriched') }} iee
-GROUP BY ALL
+GROUP BY
+    iee.order_id,
+    iee.order_date,
+    iee.order_status,
+    iee.required_date,
+    iee.shipped_date,
+    iee.shipment_status,
+    iee.shipment_type,
+    iee.order_store_id,
+    iee.order_store_name,
+    iee.order_store_city,
+    iee.order_store_state,
+    iee.order_zip_code,
+    iee.customer_id,
+    iee.staff_id
    
