@@ -23,7 +23,7 @@ SELECT
         safe_divide(SUM(evt.order_item_discount), COUNT(DISTINCT evt.order_id)), 2
     ) AS avg_discount_amount_per_order
 FROM {{ ref("int_order_items_event_enriched") }} evt
-LEFT join {{ ref("int_products_joined") }} prd on evt.product_id = prd.product_id
+LEFT JOIN {{ ref("int_products_joined") }} prd on evt.product_id = prd.product_id
 WHERE evt.shipment_status = 'SHIPPED'
 GROUP BY 
     prd.product_id,
