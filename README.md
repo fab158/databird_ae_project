@@ -71,7 +71,7 @@ Dans le cadre du projet 3 types de tranfo :
 - Job de CI *dbt cloud* déclenché à la PR
 
  #### *4.3 Performances*  
-- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et clustering sont réalisés sur les tables -> donc notemment la couche mart.Preferable realise plan exec prealable.
+- Ici le jeux de données n'est pas suffisamment volumineux pour que le partitionnement et le clustering est un effet.Le partitionnement et le clustering sont réalisés sur les tables -> donc notemment la couche mart.Les champs de type date sont des candiadats naturels au partitionnement.Pas necessaire non plus de mettre en place de chargement incremental vu la volumentrie.
 
 ## 5. Visualisation et partage 
 

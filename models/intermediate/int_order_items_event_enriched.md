@@ -1,8 +1,8 @@
 {% docs int_order_items_event_enriched %}
 
-- **Modele int_order_items_event_enriched**
+**Modele int_order_items_event_enriched**
 
-- **Description** :
+**Description** :
 
 Ce modele sert à denormaliser les données , et enrichir les données avec de nouvelles variables dérivées :
 
@@ -12,7 +12,7 @@ Ce modele sert à denormaliser les données , et enrichir les données avec de n
 - *Shipment_status*: Statut de l'envoi
 - *Shipment_type*: Type de l'envoi (en retard ou non)
 
-- **Granularité** :
+**Granularité** :
 
 La granularité la plus fine ici est la ligne de commande
 
