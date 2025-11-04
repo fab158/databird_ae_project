@@ -82,3 +82,6 @@ Dans le cadre du projet 3 types de tranfo :
 ![Analyse des ventes](images/dash_customers.png)  
 
 *Possibilité de faire du drill down sur le client, de naviguer par region, typologie de client*
+
+#### *NB
+*Pour simplifier, j'ai réalisé les commentaires en francais.En fonction du contexte de l'entreprise, la documentation pourrait etre rédigée en anglais*
