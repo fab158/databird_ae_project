@@ -1,14 +1,14 @@
 {% docs mrt_customer_profile %}
 
-- **Modele mrt_customer_profile**
+**Modele mrt_customer_profile**
 
-- **Description** :
+**Description** :
 
 Ce modele a une matérisalisation de type table (cf.dbt_project.yml) auquel on ajoute des metadonnées (cf.macro)
 Ce modele regroupe les métriques liées au client.
 Sert à analyser le comportement des clients : commandes, retards, quantités, segments.
 
-- **Colonnes principales** :
+**Colonnes principales** :
 
 - *nb_orders*: Nombre total de commandes par client
 
@@ -32,7 +32,7 @@ Sert à analyser le comportement des clients : commandes, retards, quantités, s
 - *avg_delay_between_shipped_orders* : Délai moyen entre les commandes expédiées
 - *customer_segment* : Segment client calculé (NEW / OLD / RECURRENT)
 
-- **Granularité** :
+**Granularité** :
 
 La granularité ici est une ligne par client
 
