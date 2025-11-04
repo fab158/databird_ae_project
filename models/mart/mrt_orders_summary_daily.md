@@ -4,8 +4,8 @@
 
 - **Description** :
 
-- Ce modele a une matérisalisation de type table (cf.dbt_project.yml) auquel on ajoute des metadonnées (cf.macro)
-- Ce modele decrit les ventes par produit et magasin
+Ce modele a une matérisalisation de type table (cf.dbt_project.yml) auquel on ajoute des metadonnées (cf.macro)
+Ce modele decrit les ventes par produit et magasin
 
 - **Granularité** :
 
