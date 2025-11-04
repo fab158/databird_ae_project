@@ -25,4 +25,8 @@ SELECT
 FROM {{ ref("int_order_items_event_enriched") }} evt
 LEFT join {{ ref("int_products_joined") }} prd on evt.product_id = prd.product_id
 WHERE evt.shipment_status = 'SHIPPED'
-GROUP BY ALL
+GROUP BY 
+    prd.product_id,
+    prd.product_name,
+    prd.category_name,
+    prd.brand_name
