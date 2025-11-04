@@ -20,7 +20,13 @@ WITH sales_by_store AS (
     LEFT JOIN {{ ref('int_products_joined') }} prd
         ON evt.product_id=prd.product_id
     WHERE evt.shipment_status = 'SHIPPED'
-    GROUP BY ALL
+    GROUP BY 
+        order_date,
+        evt.order_store_id,
+        evt.order_store_name,
+        evt.order_store_city,
+        evt.order_store_state
+    
 ),
 last_sales_date AS(
     SELECT 
