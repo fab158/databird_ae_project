@@ -64,11 +64,8 @@ select
     oie.order_item_total,
     oie.order_item_discount,
     oie.order_item_without_discount,
-    
-
     stock_id,
     stk.quantity       as stock_qty_in_store,
-
     sto.store_id       as order_store_id,
     sto.store_name     as order_store_name,
     sto.city           as order_store_city,
@@ -82,5 +79,5 @@ INNER JOIN order_enriched ore
 INNER JOIN {{ ref('stg_localbike_database__stores') }} sto
     ON ore.store_id = sto.store_id
 LEFT JOIN {{ ref('stg_localbike_database__stocks') }} stk
-    on  oie.product_id = stk.product_id
-    and sto.store_id = stk.store_id
+    ON  oie.product_id = stk.product_id
+    AND sto.store_id = stk.store_id
