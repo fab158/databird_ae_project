@@ -6,7 +6,7 @@
 
 Modele de la couche intermediate. Ce Modele sert à denormaliser les données des employes.
 Il s'agit donc ici de mettre a plat les informations liées aux employes . 
-Notemment la relation reflexive avec le manager.
+Notemment de recuperer le manager lié à l'employé
 Cette agregation pourra etre ensuite etre reutilisée par les couches superieures
 
 **Granularité** :
